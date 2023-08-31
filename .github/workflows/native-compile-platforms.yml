@@ -120,8 +120,6 @@ jobs:
 
             echo "=============== cat build-oh/proj/cfg.cmake ==============="
             cat build-oh/proj/cfg.cmake
-            echo "current dir: $(pwd)"
-            du -h --max-depth=3
 
             mkdir -p build-oh/assets
 
