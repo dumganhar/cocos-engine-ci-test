@@ -108,24 +108,24 @@ jobs:
             echo "message(STATUS \"hook before \${CC_TARGET_NAME}\")" >> Pre-Sample.cmake
             echo "message(STATUS \"hook after \${CC_TARGET_NAME}\")" >> Post-Sample.cmake
 
-            mkdir -p build/proj
-            touch build/proj/cfg.cmake
-            echo "set(CC_USE_GLES3 ON)" >> build/proj/cfg.cmake
-            echo "set(CC_USE_VULKAN OFF)" >> build/proj/cfg.cmake
-            echo "set(CC_USE_GLES2 ON)" >> build/proj/cfg.cmake
-            echo "set(USE_WEBSOCKET_SERVER OFF)" >> build/proj/cfg.cmake
-            echo "set(CMAKE_CXX_STANDARD_REQUIRED ON)" >> build/proj/cfg.cmake
-            echo "set(COCOS_X_PATH $NATIVE_ROOT)" >> build/proj/cfg.cmake
-            echo "set(CC_EXECUTABLE_NAME \"\")" >> build/proj/cfg.cmake
+            mkdir -p build-oh/proj
+            touch build-oh/proj/cfg.cmake
+            echo "set(CC_USE_GLES3 ON)" >> build-oh/proj/cfg.cmake
+            echo "set(CC_USE_VULKAN OFF)" >> build-oh/proj/cfg.cmake
+            echo "set(CC_USE_GLES2 ON)" >> build-oh/proj/cfg.cmake
+            echo "set(USE_WEBSOCKET_SERVER OFF)" >> build-oh/proj/cfg.cmake
+            echo "set(CMAKE_CXX_STANDARD_REQUIRED ON)" >> build-oh/proj/cfg.cmake
+            echo "set(COCOS_X_PATH $NATIVE_ROOT)" >> build-oh/proj/cfg.cmake
+            echo "set(CC_EXECUTABLE_NAME \"\")" >> build-oh/proj/cfg.cmake
 
-            echo "=============== cat build/proj/cfg.cmake ==============="
-            cat build/proj/cfg.cmake
+            echo "=============== cat build-oh/proj/cfg.cmake ==============="
+            cat build-oh/proj/cfg.cmake
             echo "current dir: $(pwd)"
             du -h --max-depth=3
 
-            mkdir -p build/assets
+            mkdir -p build-oh/assets
 
-            ASSET_DIR=$GITHUB_WORKSPACE/templates/openharmony/build
+            ASSET_DIR=$GITHUB_WORKSPACE/templates/openharmony/build-oh
 
             echo "=============== HACK ./entry/build-profile.json5 ==============="
             sed -i "s@[^-]DRES_DIR[^=]@$ASSET_DIR@g" ./entry/build-profile.json5
@@ -138,8 +138,6 @@ jobs:
 
             echo "=============== HACK ./hvigor/hvigor-wrapper.js ==============="
             sed -i "s@HVIGOR_WRAPPER_PNPM_SCRIPT_PATH,\[\"install\"\]@HVIGOR_WRAPPER_PNPM_SCRIPT_PATH,\[\"install\", \"--lockfile=false\"\]@g" ./hvigor/hvigor-wrapper.js
-            echo "hvigor/hvigor-wrapper.js: "
-            cat ./hvigor/hvigor-wrapper.js
 
             echo "=============== SET NPM OH REGISTRY ==============="
             echo "@ohos:registry=https://repo.harmonyos.com/npm/" >> ~/.npmrc
