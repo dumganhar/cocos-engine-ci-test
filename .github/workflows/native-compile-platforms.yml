@@ -118,6 +118,9 @@ jobs:
             echo "set(COCOS_X_PATH $NATIVE_ROOT)" >> build/proj/cfg.cmake
             echo "set(CC_EXECUTABLE_NAME \"\")" >> build/proj/cfg.cmake
 
+            echo "=============== cat build/proj/cfg.cmake ==============="
+            cat build/proj/cfg.cmake
+
             mkdir -p build/assets
 
             ASSET_DIR=$GITHUB_WORKSPACE/templates/openharmony/build
