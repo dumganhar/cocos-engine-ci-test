@@ -154,10 +154,10 @@ jobs:
             echo "{\"hvigorVersion\":\"3.0.2\",\"dependencies\":{\"@ohos/hvigor-ohos-plugin\":\"3.0.2\"}}" > ./hvigor/hvigor-config.json5
 
             echo "=============== EXECUTE hvigorw ==============="
-            #./hvigorw clean -i
-            #./hvigorw --stop-daemon -i
+            ./hvigorw clean -i
+            ./hvigorw --stop-daemon -i
             # ./hvigorw assembleHap -p debuggable=true --no-daemon -i
-            #./hvigorw default@ProcessLibs -p debuggable=true --no-daemon -d
+            ./hvigorw default@ProcessLibs -p debuggable=true --no-daemon -d
             echo "=============== EXECUTE hvigorw DONE ==============="
 
 
