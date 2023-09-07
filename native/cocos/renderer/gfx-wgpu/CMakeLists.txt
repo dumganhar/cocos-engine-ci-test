@@ -116,8 +116,11 @@ target_include_directories(
 	${ENGINE_ROOT_DIR}/cocos/renderer
 	${ENGINE_ROOT_DIR}/cocos/platform
 	${ENGINE_ROOT_DIR}/cocos/renderer/core
-    ${ENGINE_ROOT_DIR}/external/sources
 	${CC_EXTERNAL_PRIVATE_INCLUDES}
+)
+
+target_include_directories(
+    ${APP_NAME}_wasm SYSTEM PRIVATE ${ENGINE_ROOT_DIR}/external/sources
 )
 
 # message(${WGPU_EMS_EXTERNAL_LIBS})
