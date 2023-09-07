@@ -45,7 +45,7 @@ jobs:
         run: |
           if ! command -v ninja &> /dev/null; then
               echo "Ninja not found, installing..."
-              sudo apt update
+              # sudo apt update
               sudo apt install ninja-build
           else
               echo "Ninja is already installed."
