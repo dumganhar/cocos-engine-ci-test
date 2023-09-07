@@ -12,7 +12,7 @@ set(ENGINE_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/../../..)
 
 include(${ENGINE_ROOT_DIR}/cmake/predefine.cmake)
 
-include (${ENGINE_ROOT_DIR}/external/CMakeLists.txt)
+# include (${ENGINE_ROOT_DIR}/external/CMakeLists.txt)
 
 include(${ENGINE_ROOT_DIR}/external/sources/boost-source/boost.cmake)
 
@@ -116,6 +116,7 @@ target_include_directories(
 	${ENGINE_ROOT_DIR}/cocos/renderer
 	${ENGINE_ROOT_DIR}/cocos/platform
 	${ENGINE_ROOT_DIR}/cocos/renderer/core
+    ${ENGINE_ROOT_DIR}/external/sources
 	${CC_EXTERNAL_PRIVATE_INCLUDES}
 )
 
