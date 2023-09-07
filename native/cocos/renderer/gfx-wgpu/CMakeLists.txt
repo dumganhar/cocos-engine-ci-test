@@ -14,6 +14,8 @@ include(${ENGINE_ROOT_DIR}/cmake/predefine.cmake)
 
 include (${ENGINE_ROOT_DIR}/external/CMakeLists.txt)
 
+include(${ENGINE_ROOT_DIR}/external/sources/boost-source/boost.cmake)
+
 add_definitions(-DBOOST_NO_CXX98_FUNCTION_BASE)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17  -Wextra -Wno-nonportable-include-path -fno-exceptions -v -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES")

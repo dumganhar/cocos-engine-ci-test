@@ -52,8 +52,8 @@ jobs:
           which ninja
 
       - name: Compile
-        env:
-          COCOS_ENGINE_DEV: 1
+        # env:
+        #   COCOS_ENGINE_DEV: 1
         run: |
           NATIVE_ROOT=$GITHUB_WORKSPACE/native
           cd $NATIVE_ROOT/cocos/renderer/gfx-wgpu
