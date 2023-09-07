@@ -11,13 +11,13 @@ on:
 
 jobs:
   generate_emsdk_cache:
-    name: "Generate Emsdk SDK cache"
+    name: "Generate Emsdk cache"
     runs-on: ubuntu-latest
     steps:
       - name: Setup emsdk
-        uses: mymindstorm/setup-emsdk@v11
+        uses: mymindstorm/setup-emsdk@ab889da2abbcbb280f91ec4c215d3bb4f3a8f775
         with:
-          version: ${{ github.event.inputs.oh_sdk_version }}
+          version: ${{ github.event.inputs.emsdk_version }}
           actions-cache-folder: 'emsdk-cache'
 
       - name: Verify
