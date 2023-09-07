@@ -59,6 +59,6 @@ jobs:
           cd $NATIVE_ROOT/cocos/renderer/gfx-wgpu
           mkdir build
           cd build
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_BUILD_TYPE=Debug
+          cmake .. -GNinja -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_BUILD_TYPE=Debug
           ninja
           echo "Compile WGPU by ems on Ubuntu Done!"
