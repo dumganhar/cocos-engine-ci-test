@@ -41,14 +41,25 @@ jobs:
           which emcc
           emcc -v
 
+      - name: Install ninja
+        run: |
+          if ! command -v ninja &> /dev/null; then
+              echo "Ninja not found, installing..."
+              # sudo apt update
+              sudo apt install ninja-build
+          else
+              echo "Ninja is already installed."
+          fi
+          which ninja
+
       - name: Compile
         run: |
           NATIVE_ROOT=$GITHUB_WORKSPACE/native
           cd $NATIVE_ROOT/cocos/renderer/gfx-wgpu
           mkdir build
           cd build
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_BUILD_TYPE=Debug
+          cmake .. -GNinja -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_BUILD_TYPE=Debug
           core_count=$(nproc)
           echo ">>>> core count: ${core_count}"
-          make -j${core_count}
-          echo "Compile WGPU by ems on Ubuntu Done!"
+          ninja
+          echo "============ Compile WGPU by ems on Ubuntu Done! ============"
