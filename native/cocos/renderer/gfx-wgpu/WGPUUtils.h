@@ -168,6 +168,7 @@ static WGPUTextureSampleType textureSampleTypeTrait(Format format) {
             return WGPUTextureSampleType::WGPUTextureSampleType_Depth;
         default:
             printf("unsupport texture sample type yet, github@hana-alice to fix.");
+            return WGPUTextureSampleType::WGPUTextureSampleType_Undefined;
     }
 }
 
