@@ -526,6 +526,7 @@ static WGPUVertexFormat toWGPUVertexFormat(Format format) {
             return WGPUVertexFormat_Sint32x4;
         default:
             printf("usvf %d\n", format);
+            return WGPUVertexFormat_Undefined;
     }
 }
 
