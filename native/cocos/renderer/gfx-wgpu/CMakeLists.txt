@@ -12,15 +12,16 @@ set(ENGINE_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/../../..)
 
 include(${ENGINE_ROOT_DIR}/cmake/predefine.cmake)
 
-# include (${ENGINE_ROOT_DIR}/external/CMakeLists.txt)
+include (${ENGINE_ROOT_DIR}/external/CMakeLists.txt)
 
-include(${ENGINE_ROOT_DIR}/external/sources/boost-source/boost.cmake)
+# include(${ENGINE_ROOT_DIR}/external/sources/boost-source/boost.cmake)
 
 add_definitions(-DBOOST_NO_CXX98_FUNCTION_BASE)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17  -Wextra -Wno-nonportable-include-path -fno-exceptions -v -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g3 -D_DEBUG=1 -Wno-unused -O0 -std=c++17 -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -w -DNDEBUG=1 -O3 -std=c++17 -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17  -Wextra -Wno-nonportable-include-path -fno-exceptions")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-parameter -Wno-format -Wno-sign-compare -Wno-unknown-pragmas -Wno-missing-field-initializers")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -D_DEBUG=1 -Wno-unused -O0 -std=c++17 ")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG=1 -O3 -std=c++17 ")
 
 message(${CMAKE_BUILD_TYPE})
 
@@ -107,7 +108,7 @@ AUX_SOURCE_DIRECTORY(
 add_executable(${APP_NAME}_wasm ${WASM_EXPORTS} ${NATIVE_SRC})
 
 target_include_directories(
-	${APP_NAME}_wasm PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include"
+	${APP_NAME}_wasm PRIVATE
 	${CC_EXTERNAL_INCLUDES}
     ${CMAKE_CURRENT_LIST_DIR}
 	${ENGINE_ROOT_DIR}
@@ -117,10 +118,6 @@ target_include_directories(
 	${ENGINE_ROOT_DIR}/cocos/platform
 	${ENGINE_ROOT_DIR}/cocos/renderer/core
 	${CC_EXTERNAL_PRIVATE_INCLUDES}
-)
-
-target_include_directories(
-    ${APP_NAME}_wasm SYSTEM PRIVATE ${ENGINE_ROOT_DIR}/external/sources
 )
 
 # message(${WGPU_EMS_EXTERNAL_LIBS})
