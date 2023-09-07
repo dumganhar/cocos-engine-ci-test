@@ -1,7 +1,7 @@
 name: <Native> Compile
 
 on:
-  # push:
+  #cjh push:
   #   branches:
   #     - '**'
   pull_request:
@@ -9,14 +9,6 @@ on:
     - 'templates/**'
     - 'native/**'
     - '.github/workflows/native-compile-platforms.yml'
-  workflow_dispatch:
-    inputs:
-      oh_sdk_version:
-        description: 'Openharmony SDK version'
-        type: string
-        default: '9'
-        required: true
-      
 
 # github.head_ref is only defined on pull_request events
 concurrency:
@@ -24,10 +16,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  cache_oh_sdk:
-    name: "Cache OH SDK"
-
-
   compile_openharmony:
     name: "Openharmony"
     if: 
