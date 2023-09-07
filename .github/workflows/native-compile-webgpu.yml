@@ -19,7 +19,6 @@ jobs:
   compile_wgpu_mac:
     name: "Emscripten"
     runs-on: ubuntu-latest
-    if: contains( github.event.pull_request.title, 'WGPU_CI_ON' )
     steps:
       - uses: actions/checkout@v2
 
