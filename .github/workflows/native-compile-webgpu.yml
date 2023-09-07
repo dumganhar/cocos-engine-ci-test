@@ -3,6 +3,7 @@ name: <Native> Compile WebGPU
 on:
   push:
     paths:
+    - 'native/external-config.json'
     - 'native/cocos/base/**'
     - 'native/cocos/renderer/gfx-base/**'
     - 'native/cocos/renderer/gfx-wgpu/**'
@@ -58,6 +59,6 @@ jobs:
           cd $NATIVE_ROOT/cocos/renderer/gfx-wgpu
           mkdir build
           cd build
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=${EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_BUILD_TYPE=Debug
           ninja
           echo "Compile WGPU by ems on Ubuntu Done!"
