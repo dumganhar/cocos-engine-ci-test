@@ -13,8 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-compile_android:
+  compile_android:
     name: "Android"
     runs-on: ubuntu-latest
     steps:
