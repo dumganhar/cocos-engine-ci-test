@@ -7,7 +7,7 @@ on:
         description: "Select a library"
         required: true
         default: "Spine"
-        type: string
+        type: choice
         options:
           - Spine
           - Meshopt
