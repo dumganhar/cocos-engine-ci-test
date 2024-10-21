@@ -10,6 +10,7 @@ on:
         type: string
         options:
           - Spine
+          - Meshopt
 
 jobs:
   build_spine_wasm_asmjs:
